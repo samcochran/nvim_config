@@ -19,13 +19,13 @@ vim.keymap.set('n', '<leader>h', '<C-w>h', {})
 vim.keymap.set('n', '<leader>l', '<C-w>l', {})
 vim.keymap.set('n', '<leader>r', '<C-w>r', {})
 
-vim.keymap.set('n', '<F4>', ':ToggleTermToggleAll start_in_insert=true <CR>', {})
-vim.keymap.set('n', '<F4>', ':ToggleTerm size=40 direction=float start_in_insert=true <CR>', {})
-vim.keymap.set('t', '<F4>', '<C-\\><C-n>:ToggleTermToggleAll<CR>', {})
+vim.keymap.set('n', '<leader>44', ':ToggleTermToggleAll start_in_insert=true <CR>', {})
+vim.keymap.set('n', '<leader>44', ':ToggleTerm size=40 direction=float start_in_insert=true <CR>', {})
+vim.keymap.set('t', '<leader>44', '<C-\\><C-n>:ToggleTermToggleAll<CR>', {})
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>', {})
 -- vim.keymap.del('i', '<F1>')
 
-vim.keymap.set('n', '<F3>', '<Cmd>Neotree toggle<CR>', {})
+vim.keymap.set('n', '<leader>33', '<Cmd>Neotree toggle<CR>', {})
 
 vim.keymap.set('n', '<leader>td', function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
