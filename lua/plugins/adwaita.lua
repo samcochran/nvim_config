@@ -1,5 +1,5 @@
 return {
-    "Mofiqul/adwaita.nvim", 
+    "samcochran/adwaita.nvim", 
     lazy = false, 
     priority = 1000,
     config = function()
