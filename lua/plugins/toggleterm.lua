@@ -4,6 +4,7 @@ return {
         require("toggleterm").setup({
            persist_mode = false,
            start_in_insert = true,
+           shell = vim.o.shell,
         })
     end
 

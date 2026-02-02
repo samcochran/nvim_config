@@ -20,7 +20,7 @@ vim.keymap.set('n', '<leader>l', '<C-w>l', {})
 vim.keymap.set('n', '<leader>r', '<C-w>r', {})
 
 vim.keymap.set('n', '<leader>44', ':ToggleTermToggleAll start_in_insert=true <CR>', {})
-vim.keymap.set('n', '<leader>44', ':ToggleTerm size=40 direction=float start_in_insert=true <CR>', {})
+vim.keymap.set('n', '<leader>44', ':ToggleTerm size=40 direction=float dir=%:p:h start_in_insert=true <CR>', {})
 vim.keymap.set('t', '<leader>44', '<C-\\><C-n>:ToggleTermToggleAll<CR>', {})
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>', {})
 -- vim.keymap.del('i', '<F1>')
@@ -42,3 +42,5 @@ vim.diagnostic.config({
 })
 
 vim.cmd('set clipboard=unnamedplus')
+vim.o.shell = "/opt/homebrew/bin/bash"
+

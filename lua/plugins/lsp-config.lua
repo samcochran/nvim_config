@@ -16,9 +16,12 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})
-            lspconfig.pylsp.setup({})
+            -- Using new vim.lsp.config API (nvim 0.11+)
+            vim.lsp.config.lua_ls = {}
+            vim.lsp.config.pylsp = {}
+
+            vim.lsp.enable('lua_ls')
+            vim.lsp.enable('pylsp')
             -- vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
         end
     }
