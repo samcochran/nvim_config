@@ -1,7 +1,17 @@
 return {
 	"coder/claudecode.nvim",
 	dependencies = { "folke/snacks.nvim" },
-	config = true,
+	config = function(_, opts)
+		require("claudecode").setup(opts)
+
+		-- Ensure diffs open in normal mode instead of insert mode
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "diff",
+			callback = function()
+				vim.cmd("stopinsert")
+			end,
+		})
+	end,
 	opts = {
 		-- Server Configuration
 		port_range = { min = 10000, max = 65535 },
@@ -30,7 +40,7 @@ return {
 		diff_opts = {
 			auto_close_on_accept = true,
 			vertical_split = true,
-			open_in_current_tab = true,
+			open_in_current_tab = false,
 			keep_terminal_focus = false,
 		},
 	},
