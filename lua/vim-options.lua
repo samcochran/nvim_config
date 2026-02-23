@@ -19,7 +19,7 @@ vim.keymap.set('n', '<leader>h', '<C-w>h', {})
 vim.keymap.set('n', '<leader>l', '<C-w>l', {})
 vim.keymap.set('n', '<leader>r', '<C-w>r', {})
 
-vim.keymap.set('n', '<leader>44', ':ToggleTermToggleAll start_in_insert=true <CR>', {})
+-- vim.keymap.set('n', '<leader>44', ':ToggleTermToggleAll start_in_insert=true <CR>', {})
 vim.keymap.set('n', '<leader>44', ':ToggleTerm size=40 direction=float dir=%:p:h start_in_insert=true <CR>', {})
 vim.keymap.set('t', '<leader>44', '<C-\\><C-n>:ToggleTermToggleAll<CR>', {})
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>', {})
@@ -42,5 +42,10 @@ vim.diagnostic.config({
 })
 
 vim.cmd('set clipboard=unnamedplus')
-vim.o.shell = "/opt/homebrew/bin/bash"
+local is_mac = vim.fn.has("mac") == 1
+if is_mac then
+    vim.o.shell = "/opt/homebrew/bin/bash"
+else
+    vim.o.shell = "/bin/bash"
+end
 
