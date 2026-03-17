@@ -19,6 +19,26 @@ vim.keymap.set('n', '<leader>h', '<C-w>h', {})
 vim.keymap.set('n', '<leader>l', '<C-w>l', {})
 vim.keymap.set('n', '<leader>r', '<C-w>r', {})
 
+-- Nudge rightmost panel width to force terminal redraw (fixes rendering corruption)
+vim.keymap.set('n', '<leader>lr', function()
+    local wins = vim.api.nvim_tabpage_list_wins(0)
+    local rightmost, max_col = nil, -1
+    for _, w in ipairs(wins) do
+        local col = vim.api.nvim_win_get_position(w)[2]
+        if col > max_col then
+            max_col = col
+            rightmost = w
+        end
+    end
+    if rightmost then
+        local w = vim.api.nvim_win_get_width(rightmost)
+        vim.api.nvim_win_set_width(rightmost, w - 1)
+        vim.schedule(function()
+            vim.api.nvim_win_set_width(rightmost, w)
+        end)
+    end
+end, { desc = "Fix terminal rendering (nudge rightmost panel)" })
+
 -- vim.keymap.set('n', '<leader>44', ':ToggleTermToggleAll start_in_insert=true <CR>', {})
 vim.keymap.set('n', '<leader>44', ':ToggleTerm size=40 direction=float dir=%:p:h start_in_insert=true <CR>', {})
 vim.keymap.set('t', '<leader>44', '<C-\\><C-n>:ToggleTermToggleAll<CR>', {})
