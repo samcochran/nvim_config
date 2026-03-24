@@ -41,7 +41,7 @@ return {
 			auto_close_on_accept = true,
 			vertical_split = true,
 			open_in_current_tab = false,
-			keep_terminal_focus = true,
+			keep_terminal_focus = false,
 		},
 	},
 	keys = {
